@@ -1,0 +1,76 @@
+ALTER procedure [dbo].[INSERT_NEW_CUSTOMER] @UserName varchar(50), @Password varchar (50), @FirstName varchar (50), @LastName varchar (50), @CreditCard int
+AS
+insert into customers (UserName, Password, FirstName, LastName, CreditCard)
+values (@UserName, @Password, @FirstName, @LastName, @CreditCard)
+=======================================================================================================
+ALTER procedure [dbo].[INSERT_NEW_ORDER] @IdCustomer int, @IdProduct int, @Quantity int, @TotalPrice int 
+AS
+insert into  orders (Id_Customer, Id_Product, Quantity_Of_Orders, Total_Price)
+values (@IdCustomer, @IdProduct, @Quantity, @TotalPrice)
+=======================================================================================================
+ALTER procedure [dbo].[INSERT_NEW_PRODUCT] @NAME VARCHAR (50), @IDSUP INT, @PRICE INT, @INTSTOCK INT
+AS
+INSERT INTO Products
+           (Name
+           ,Id_Supplier
+           ,Price
+           ,InStock)
+     VALUES
+           (@NAME, @IDSUP,@PRICE,@INTSTOCK)
+=============================================================================================================================           
+           ALTER procedure [dbo].[INSERT_NEW_SUPPLIER] @UserName varchar(50), @Password varchar (50), @FirstName varchar (50), @LastName varchar (50), @NameOfCompany varchar (50)
+AS
+insert into Suppliers(UserName, Password, FirstName, LastName, Name_Of_Company)
+values (@UserName, @Password, @FirstName, @LastName, @NameOfCompany)
+=======================================================================================================
+ALTER procedure [dbo].[SELECT_ALL_PRODUCTS]
+AS
+select * from products
+=======================================================================================================
+ALTER procedure [dbo].[SELECT_EXISTING_CUSTOMER] @PASSWORD varchar(50), @USERNAME VARCHAR(50)
+AS
+SELECT * FROM CUSTOMERS WHERE Password = @PASSWORD AND UserName = @USERNAME
+=======================================================================================================
+ALTER procedure [dbo].[SELECT_EXISTING_SUPPLIER] @PASSWORD varchar(50), @USERNAME VARCHAR(50)
+AS
+SELECT * FROM Suppliers WHERE Password = @PASSWORD AND UserName = @USERNAME
+=======================================================================================================
+ALTER procedure [dbo].[SELECT_LIST_ORDERS_BY_CUSTOMER] @ID INT
+AS
+SELECT p.Name, o.id, o.id_customer, o.quantity_of_orders,o.id_product, o.total_price FROM Orders AS O join products as p
+on o.id_product = p.id
+where o.id_customer = @id
+=======================================================================================================
+ALTER procedure [dbo].[SELECT_LIST_PRODUCTS_BY_SUPPLIER] @id int
+AS
+SELECT s.FirstName, p.id, p.Name, p.price,p.instock FROM products AS p join suppliers as s
+on s.Id = p.Id_Supplier
+where s.Id = @id
+=======================================================================================================
+ALTER procedure [dbo].[SELECT_PRODUCT_BY_NAME] @NAME varchar (50)
+AS
+select * from products where Name = @NAME
+=======================================================================================================
+ALTER procedure [dbo].[SELECT_PRODUCT_BY_NAME_AND_IDSUP] @NAME VARCHAR(50), @IDSUPPLIER INT
+AS
+select * from products where name = @NAME and Id_Supplier = @IDSUPPLIER
+=======================================================================================================
+ALTER procedure [dbo].[UPDATE_INSTOCK_PRODUCTS_BY_ID] @Id int, @Quantity int
+as
+update products 
+set InStock = InStock - @quantity 
+where Id = @Id
+=======================================================================================================
+ALTER procedure [dbo].[UPDATE_ORDERS_TOTALPRICE]
+AS
+UPDATE ORDERS 
+SET TOTAL_PRICE =
+ P.PRICE * O.QUANTITY_OF_ORDERS FROM PRODUCTS AS P JOIN ORDERS AS O 
+ON P.ID = O.ID_PRODUCT
+ WHERE o.id_product = p.id
+ =======================================================================================================
+ ALTER procedure [dbo].[UPDATE_SUPPLIER_PRODUCT] @ID INT, @QUANTITY INT
+AS
+UPDATE PRODUCTS 
+SET InStock = InStock + @QUANTITY
+WHERE ID = @ID
