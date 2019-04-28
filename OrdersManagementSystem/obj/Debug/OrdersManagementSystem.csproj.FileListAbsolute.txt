@@ -1,0 +1,7 @@
+C:\Users\Noam\Desktop\DotNET\ProjectPassOver\OrdersManagementSystem\bin\Debug\OrdersManagementSystem.exe.config
+C:\Users\Noam\Desktop\DotNET\ProjectPassOver\OrdersManagementSystem\bin\Debug\OrdersManagementSystem.exe
+C:\Users\Noam\Desktop\DotNET\ProjectPassOver\OrdersManagementSystem\bin\Debug\OrdersManagementSystem.pdb
+C:\Users\Noam\Desktop\DotNET\ProjectPassOver\OrdersManagementSystem\obj\Debug\OrdersManagementSystem.csprojAssemblyReference.cache
+C:\Users\Noam\Desktop\DotNET\ProjectPassOver\OrdersManagementSystem\obj\Debug\OrdersManagementSystem.csproj.CoreCompileInputs.cache
+C:\Users\Noam\Desktop\DotNET\ProjectPassOver\OrdersManagementSystem\obj\Debug\OrdersManagementSystem.exe
+C:\Users\Noam\Desktop\DotNET\ProjectPassOver\OrdersManagementSystem\obj\Debug\OrdersManagementSystem.pdb
